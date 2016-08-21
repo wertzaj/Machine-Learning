@@ -18,14 +18,20 @@ grad = zeros(size(theta));
 %               derivatives of the cost w.r.t. each parameter in theta
 
 h = sigmoid(X*theta);
+
 % theta1 = theta(2:m); %since we don't regularize
+%theta(1)=0; %since we don't regularize first feature
 
-theta(1)=0; %since we don't regularize first feature
+%I'm wondering if we have to perform a for loop b/c of this theta(1). Prolly not, but you I think you would have to make a if statement
 
-J = (-y'*log(h) - (1-y)'*log(1-h))/m + lambda/(2*m)*sum(theta.^2);
+J = (-y'*log(h) - (1-y)'*log(1-h))/m + lambda/(2*m)*sum(theta(2:end).^2);
 
-grad = 1/m * X'*(h-y) + lambda/m*theta;
+for j=1:size(theta)
+  if j == 1
+    grad(j) = 1/m*(h - y)'*X(:,j);
+  else
+    grad(j) = 1/m*(h - y)'*X(:,j) + lambda/m*theta(j); 
+end
 
 % =============================================================
-
 end
