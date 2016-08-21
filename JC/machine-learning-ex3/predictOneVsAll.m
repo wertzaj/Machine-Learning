@@ -18,6 +18,19 @@ p = zeros(size(X, 1), 1);
 X = [ones(m, 1) X];
 
 % ====================== YOUR CODE HERE ======================
+% function g = sigmoid(z)
+sig_temp = X*all_theta';
+p_temp = sigmoid(sig_temp) % this will return a matrix 5000x10
+% go to each row of p_temp and find the index with the highest value
+% return/assign this index value to the p column vector
+
+% ===== Use max to find the integer ======================
+% there might be different ways to find max based on 'dim' value
+% but we'll use 'dim=2' since it returns a col. vector
+[perc, p] = max(p_temp, [], 2);
+
+end
+
 % Instructions: Complete the following code to make predictions using
 %               your learned logistic regression parameters (one-vs-all).
 %               You should set p to a vector of predictions (from 1 to
@@ -29,14 +42,5 @@ X = [ones(m, 1) X];
 %       are in rows, then, you can use max(A, [], 2) to obtain the max 
 %       for each row.
 %       
-
-
-
-
-
-
-
 % =========================================================================
 
-
-end

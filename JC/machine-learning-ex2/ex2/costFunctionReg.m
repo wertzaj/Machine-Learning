@@ -22,7 +22,7 @@ h = sigmoid(X*theta);
 % theta1 = theta(2:m); %since we don't regularize
 %theta(1)=0; %since we don't regularize first feature
 
-%I'm wondering if we have to perform a for loop b/c of this theta(1). Prolly not, but you I think you would have to make a if statement
+%I'm wondering if we have to perform a for loop b/c of this theta(1). Prolly not, but  I think you would have to make a if statement
 
 J = (-y'*log(h) - (1-y)'*log(1-h))/m + lambda/(2*m)*sum(theta(2:end).^2);
 
